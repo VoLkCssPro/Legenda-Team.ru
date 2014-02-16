@@ -1,0 +1,65 @@
+{
+  "format": "unipackage-slice-pre1",
+  "packageVariables": [
+    {
+      "name": "$modal"
+    }
+  ],
+  "uses": [
+    {
+      "package": "meteor"
+    },
+    {
+      "package": "session"
+    },
+    {
+      "package": "handlebars"
+    },
+    {
+      "package": "accounts-password"
+    },
+    {
+      "package": "stylus"
+    },
+    {
+      "package": "accounts-base"
+    },
+    {
+      "package": "underscore"
+    },
+    {
+      "package": "templating"
+    }
+  ],
+  "resources": [
+    {
+      "type": "css",
+      "file": "browser/packages/accounts-ui-bootstrap-3/login_buttons_images.css",
+      "length": 4714,
+      "offset": 0,
+      "servePath": "/packages/accounts-ui-bootstrap-3/login_buttons_images.css"
+    },
+    {
+      "type": "css",
+      "file": "browser/packages/accounts-ui-bootstrap-3/login_buttons_dropdown.styl.css",
+      "length": 30,
+      "offset": 0,
+      "servePath": "/packages/accounts-ui-bootstrap-3/login_buttons_dropdown.styl.css"
+    },
+    {
+      "type": "css",
+      "file": "browser/packages/accounts-ui-bootstrap-3/accounts_ui.styl.css",
+      "length": 1126,
+      "offset": 0,
+      "servePath": "/packages/accounts-ui-bootstrap-3/accounts_ui.styl.css"
+    },
+    {
+      "type": "prelink",
+      "file": "browser/packages/accounts-ui-bootstrap-3.js",
+      "length": 159150,
+      "offset": 0,
+      "servePath": "/packages/accounts-ui-bootstrap-3.js",
+      "sourceMap": "browser/packages/accounts-ui-bootstrap-3.js.map"
+    }
+  ]
+}

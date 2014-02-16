@@ -1,0 +1,19 @@
+{
+  "format": "unipackage-slice-pre1",
+  "packageVariables": [],
+  "uses": [
+    {
+      "package": "meteor"
+    }
+  ],
+  "resources": [
+    {
+      "type": "prelink",
+      "file": "os/packages/accounts-ui-bootstrap-3.js",
+      "length": 0,
+      "offset": 0,
+      "servePath": "/packages/accounts-ui-bootstrap-3.js",
+      "sourceMap": "os/packages/accounts-ui-bootstrap-3.js.map"
+    }
+  ]
+}
