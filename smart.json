@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "auto-nprogress": {},
+    "fast-render": {},
+    "iron-router": {},
+    "bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {},
+    "profile-online": {},
+    "handlebar-helpers": {}
+  }
+}

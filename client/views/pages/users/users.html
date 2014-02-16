@@ -1,0 +1,41 @@
+<template name='users'>
+	<div class='page-header'>
+		<h1>Пользователи</h1>
+	</div>
+	<table class='table table-hover table-striped'>
+		{{#if users}}
+			<thead>
+				<tr>
+					<th>Имя пользователя</th>
+					<th>Группа</th>
+					<th>Статус</th>
+				</tr>
+			</thead>
+			{{#each users}}
+				<tbody>
+					<tr>
+						<td>
+							{{username}} 
+						</td>
+						<td>
+							{{#if profile.isAdmin}}
+								<span class="text-danger">Администратор</span>
+							{{else}}
+								<span>Пользователь</span>	
+							{{/if}}
+						</td>
+						<td>
+						{{#if profile.online}}
+							<span class='label label-success'>Онлайн</span>
+						{{else}}
+							<span class='label label-danger'>Оффлайн</span>
+						{{/if}}
+						</td>
+					</tr>
+				</tbody>
+			{{/each}}
+		{{else}}
+			<h1 class='text-muted'>Пользователей не существует</h1>
+		{{/if}}
+	</table>
+</template>
