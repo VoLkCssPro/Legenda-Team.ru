@@ -1,0 +1,21 @@
+<template name="admin">
+	{{#if currentUser}}
+		{{#if currentUser.profile.isAdmin}}
+			{{> adminBlock}}
+		{{else}}
+			{{> forbidden}}
+		{{/if}}
+	{{else}}
+		{{#if loggingIn}}
+			{{> loading}}
+		{{else}}
+			{{> notAuthorized}}
+		{{/if}}
+	{{/if}}
+</template>
+
+<template name='adminBlock'>
+	<div class="page-header">
+		<h1>Админка</h1>
+	</div>
+</template>
