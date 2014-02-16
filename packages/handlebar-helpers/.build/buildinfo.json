@@ -1,0 +1,52 @@
+{
+  "builtBy": "meteor/10",
+  "sliceDependencies": {
+    "browser.json": {
+      "files": {
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\package.js": "8b49cfe552a7d68594201b25c295bc06cba2fb29",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\helpers.operators.js": "d3d0fff2df8c71bdfd59394907faf307aa87ce8e"
+      },
+      "directories": []
+    },
+    "os.json": {
+      "files": {
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\package.js": "8b49cfe552a7d68594201b25c295bc06cba2fb29"
+      },
+      "directories": []
+    },
+    "tests.browser.json": {
+      "files": {
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\package.js": "8b49cfe552a7d68594201b25c295bc06cba2fb29",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\helpers_tests.html": "7be7b18f65b54fe566ff40b1d241213076133c1e",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\helpers_tests.js": "b1762ef4dd858e15d6ee46180cb4a3dd12157c6b"
+      },
+      "directories": []
+    },
+    "tests.os.json": {
+      "files": {
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\package.js": "8b49cfe552a7d68594201b25c295bc06cba2fb29"
+      },
+      "directories": []
+    }
+  },
+  "pluginDependencies": {
+    "files": {
+      "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers\\package.js": "8b49cfe552a7d68594201b25c295bc06cba2fb29"
+    },
+    "directories": []
+  },
+  "pluginProviderPackages": {
+    "handlebar-helpers": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers",
+    "meteor": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\meteor\\338a49b8bf",
+    "handlebars": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\handlebars\\9f4d70719d",
+    "session": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\session\\d66688d735",
+    "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\98a94dbd76",
+    "deps": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\deps\\d6eead1cb8",
+    "tinytest": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\tinytest\\fc17777d77",
+    "test-helpers": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\test-helpers\\e07e001b75",
+    "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\decc845771",
+    "mongo-livedata": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\mongo-livedata\\31700cb194",
+    "domutils": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\domutils\\f37cd44175"
+  },
+  "source": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\handlebar-helpers"
+}

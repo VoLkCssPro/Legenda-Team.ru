@@ -1,0 +1,44 @@
+{
+  "format": "unipackage-slice-pre1",
+  "noExports": true,
+  "packageVariables": [],
+  "uses": [
+    {
+      "package": "meteor"
+    },
+    {
+      "package": "tinytest"
+    },
+    {
+      "package": "handlebars"
+    },
+    {
+      "package": "test-helpers"
+    },
+    {
+      "package": "session"
+    },
+    {
+      "package": "templating"
+    },
+    {
+      "package": "mongo-livedata"
+    },
+    {
+      "package": "domutils"
+    },
+    {
+      "package": "handlebar-helpers"
+    }
+  ],
+  "resources": [
+    {
+      "type": "prelink",
+      "file": "tests.os/packages/handlebar-helperstests.js",
+      "length": 0,
+      "offset": 0,
+      "servePath": "/packages/handlebar-helpers:tests.js",
+      "sourceMap": "tests.os/packages/handlebar-helperstests.js.map"
+    }
+  ]
+}
