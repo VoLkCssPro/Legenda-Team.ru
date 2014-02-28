@@ -56,7 +56,7 @@
     {
       "type": "prelink",
       "file": "browser/packages/accounts-ui-bootstrap-3.js",
-      "length": 159150,
+      "length": 162910,
       "offset": 0,
       "servePath": "/packages/accounts-ui-bootstrap-3.js",
       "sourceMap": "browser/packages/accounts-ui-bootstrap-3.js.map"

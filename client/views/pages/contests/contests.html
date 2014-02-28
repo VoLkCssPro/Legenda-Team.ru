@@ -1,0 +1,133 @@
+<template name="contests">
+	<div class="page-header">
+		<h1>Конкурсы</h1>
+	</div>
+	<div class="col-sm-8">
+		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+			<li class="active">
+				<a href="#contestsDotaPanel" data-toggle="tab">
+					Dota 2
+					{{#if contestsDota.count}}
+						<span class="badge">{{contestsDota.count}}</span>
+					{{/if}}
+				</a>
+			</li>
+			<li>
+				<a href="#contestsWotPanel" data-toggle="tab">
+					WoT
+					{{#if contestsWot.count}}
+						<span class="badge">{{contestsWot.count}}</span>
+					{{/if}}
+				</a>
+			</li>
+			<li>
+				<a href="#contestsCsPanel" data-toggle="tab">
+					CS 1.6
+					{{#if contestsCs.count}}
+						<span class="badge">{{contestsCs.count}}</span>
+					{{/if}}
+				</a>
+			</li>
+			<li>
+				<a href="#contestsCssPanel" data-toggle="tab">
+					CS:S
+					{{#if contestsCss.count}}
+						<span class="badge">{{contestsCss.count}}</span>
+					{{/if}}
+				</a>
+			</li>
+			<li>
+				<a href="#contestsCsgoPanel" data-toggle="tab">
+					CS:GO
+					{{#if contestsCsgo.count}}
+						<span class="badge">{{contestsCsgo.count}}</span>
+					{{/if}}
+				</a>
+			</li>
+		</ul>
+
+		<div id="contests" class="tab-content">
+			<div class="tab-pane fade active in" id="contestsDotaPanel">
+		  		<div class="panel-group">{{> contestsDotaList}}</div>
+			</div>
+			<div class="tab-pane fade" id="contestsWotPanel">
+		  		<div class="panel-group">{{> contestsWotList}}</div>
+			</div>
+			<div class="tab-pane fade" id="contestsCsPanel">
+		  		<div class="panel-group">{{> contestsCsList}}</div>
+			</div>
+			<div class="tab-pane fade" id="contestsCssPanel">
+		  		<div class="panel-group">{{> contestsCssList}}</div>
+			</div>
+			<div class="tab-pane fade" id="contestsCsgoPanel">
+		  		<div class="panel-group">{{> contestsCsgoList}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="row">
+			{{#if currentUser.profile.isAdmin}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Админцентр</h3>
+				</div>
+				<div class="panel-body">
+					{{> addContests}}
+				</div>
+			</div>
+			{{/if}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Статистика</h3>
+				</div>
+				<div class="panel-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="addContests">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<select id="game" class="form-control">
+				<option>Dota 2</option>
+				<option>WoT</option>
+				<option>CS 1.6</option>
+				<option>CS:S</option>
+				<option>CS:GO</option>
+			</select>
+		</div>
+ 		<div class="form-group">
+ 			<input type="text" placeholder="Название" class="form-control" id='name'>
+ 		</div>
+ 		<div class="form-group">
+			<input class='form-control' type="text" placeholder="Правила" id="rules" data-role="tagsinput">
+		</div>
+		<div class="form-group">
+			<input type="text" placeholder="Цель" class="form-control" id='aim'></textarea>
+		</div>
+		<div class="form-group">
+			<textarea placeholder="Описание" class="form-control" id='description'></textarea>
+		</div>
+		<div class="form-group">
+			<button class='btn btn-success pull-right' id="addButtonContests" data-loading-text="Добавление...">Добавить конкурс</button>
+		</div>
+	</div>
+</template>
+
+<template name="entryCon">
+	<div class="col-xs-12">
+		<h3>Оставить заявку</h3>
+ 		<div class="form-group">
+ 			<input type="text" placeholder="Ссылка на вашу работу" class="form-control urlGiveEntryInput url-{{_id}}">
+ 		</div>
+		<div class="form-group">
+			<textarea placeholder="Описание вашей работы" class="form-control descGiveEntryInput desc-{{_id}}"></textarea>
+		</div>
+		<div class="form-group">
+			<button class='btn btn-success pull-right btnGiveEntry' data-id='{{_id}}' data-loading-text="Добавление...">Отправить</button>
+		</div>
+	</div>
+</template>

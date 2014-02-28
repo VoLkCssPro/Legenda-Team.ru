@@ -1,0 +1,67 @@
+<template name="contestsWotList">
+	{{#each contestsWot}}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			  	<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#{{_id}}">
+						{{name}}
+					</a>
+					{{#if currentUser.profile.isAdmin}}
+						<span class="pull-right glyphicon glyphicon-remove deleteContest" data-id="{{_id}}"></span>
+					{{/if}}
+				</h4>
+			</div>
+			<div id="{{_id}}" class="panel-collapse collapse">
+				<div class="panel-body">	
+					<div class="row">
+						<div class="col-md-9">
+							<dl class='dl-horizontal'>
+								<dt>Цель:</dt>
+								<dd>{{aim}}</dd>
+								<dt>Описание:</dt>
+								<dd>{{description}}</dd>
+								<dt>Правила:</dt>
+								<dd>
+									<ul class='list-unstyled'>
+										{{#each rules}}
+											<li>- {{this}}</li>
+										{{/each}}
+									</ul>
+								</dd>
+							</dl>
+						</div>
+						<div class="col-md-3">
+							<img src="http://lorempixel.com/150/150" alt="">
+						</div>
+					</div>
+					<hr>
+					<div class="row">
+						{{> entryCon}}
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-sm-12">
+							<h3>Заявки</h3>
+							{{#each entryConReadyWot}}
+								<ul class="list-group">
+										<li class="list-group-item">
+											<dl class='dl-horizontal'>
+											<dt>Ссылка:</dt>
+											<dd>{{urlGiveEntry}}</dd>
+											<dt>Описание:</dt>
+											<dd>{{descGiveEntry}}</dd>
+										</dl>
+									</li>
+									</ul>	
+							{{else}}
+								<h4 class='text-muted'>Еще нет заявок, вы можете быть первым!</h4>
+							{{/each}}
+						</div>
+					</div>
+			  	</div>
+			</div>
+		 </div>
+	{{else}}
+		<h4 class="text-muted">Нет конкурсов по World of Tanks</h4>
+	{{/each}}
+</template>

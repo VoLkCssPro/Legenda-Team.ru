@@ -444,29 +444,43 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
             return false;                                                                                        // 151
         }                                                                                                        // 152
     };                                                                                                           // 153
-    Accounts._loginButtons.validateEmail = function(email) {                                                     // 154
-        if (Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL" && email === '')               // 155
-            return true;                                                                                         // 156
-                                                                                                                 // 157
+                                                                                                                 // 154
+    Accounts._loginButtons.validateSkype = function(skype) {                                                     // 155
+        if (skype.length > 0) {                                                                                  // 156
+            if (!Meteor.users.findOne({'profile.skype': skype})) {                                               // 157
+            	return true;                                                                                        // 158
+            } else {                                                                                             // 159
+            	loginButtonsSession.errorMessage("Такой скайп уже есть");                                           // 160
+            	return false;                                                                                       // 161
+            }                                                                                                    // 162
+        } else {                                                                                                 // 163
+            loginButtonsSession.errorMessage("Введите скайп");                                                   // 164
+            return false;                                                                                        // 165
+        }                                                                                                        // 166
+    };                                                                                                           // 167
+    Accounts._loginButtons.validateEmail = function(email) {                                                     // 168
+        if (Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL" && email === '')               // 169
+            return true;                                                                                         // 170
+                                                                                                                 // 171
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                                                                                                                 // 159
-        if (re.test(email)) {                                                                                    // 160
-            return true;                                                                                         // 161
-        } else {                                                                                                 // 162
-            loginButtonsSession.errorMessage("Invalid email");                                                   // 163
-            return false;                                                                                        // 164
-        }                                                                                                        // 165
-    };                                                                                                           // 166
-    Accounts._loginButtons.validatePassword = function(password) {                                               // 167
-        if (password.length >= 6) {                                                                              // 168
-            return true;                                                                                         // 169
-        } else {                                                                                                 // 170
-            loginButtonsSession.errorMessage("Password must be at least 6 characters long");                     // 171
-            return false;                                                                                        // 172
-        }                                                                                                        // 173
-    };                                                                                                           // 174
-                                                                                                                 // 175
-})();                                                                                                            // 176
+                                                                                                                 // 173
+        if (re.test(email)) {                                                                                    // 174
+            return true;                                                                                         // 175
+        } else {                                                                                                 // 176
+            loginButtonsSession.errorMessage("Invalid email");                                                   // 177
+            return false;                                                                                        // 178
+        }                                                                                                        // 179
+    };                                                                                                           // 180
+    Accounts._loginButtons.validatePassword = function(password) {                                               // 181
+        if (password.length >= 6) {                                                                              // 182
+            return true;                                                                                         // 183
+        } else {                                                                                                 // 184
+            loginButtonsSession.errorMessage("Password must be at least 6 characters long");                     // 185
+            return false;                                                                                        // 186
+        }                                                                                                        // 187
+    };                                                                                                           // 188
+                                                                                                                 // 189
+})();                                                                                                            // 190
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }).call(this);
@@ -649,402 +663,419 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
       Meteor.flush();                                                                                            // 98
                                                                                                                  // 99
       // update new fields with appropriate defaults                                                             // 100
-      if (username !== null)                                                                                     // 101
+      if (username !== null) {                                                                                   // 101
         document.getElementById('login-username').value = username;                                              // 102
-      else if (email !== null)                                                                                   // 103
+      } else if (email !== null) {                                                                               // 103
         document.getElementById('login-email').value = email;                                                    // 104
-      else if (usernameOrEmail !== null)                                                                         // 105
-        if (usernameOrEmail.indexOf('@') === -1)                                                                 // 106
+      } else if (usernameOrEmail !== null) {                                                                     // 105
+        if (usernameOrEmail.indexOf('@') === -1) {                                                               // 106
           document.getElementById('login-username').value = usernameOrEmail;                                     // 107
-      else                                                                                                       // 108
-        document.getElementById('login-email').value = usernameOrEmail;                                          // 109
-    },                                                                                                           // 110
-    'click #forgot-password-link': function (event) {                                                            // 111
-      event.stopPropagation();                                                                                   // 112
-      loginButtonsSession.resetMessages();                                                                       // 113
-                                                                                                                 // 114
-      // store values of fields before swtiching to the signup form                                              // 115
-      var email = trimmedElementValueById('login-email');                                                        // 116
-      var usernameOrEmail = trimmedElementValueById('login-username-or-email');                                  // 117
-                                                                                                                 // 118
-      loginButtonsSession.set('inSignupFlow', false);                                                            // 119
-      loginButtonsSession.set('inForgotPasswordFlow', true);                                                     // 120
-                                                                                                                 // 121
-      // force the ui to update so that we have the approprate fields to fill in                                 // 122
-      Meteor.flush();                                                                                            // 123
-      //toggleDropdown();                                                                                        // 124
-                                                                                                                 // 125
-      // update new fields with appropriate defaults                                                             // 126
-      if (email !== null)                                                                                        // 127
-        document.getElementById('forgot-password-email').value = email;                                          // 128
-      else if (usernameOrEmail !== null)                                                                         // 129
-        if (usernameOrEmail.indexOf('@') !== -1)                                                                 // 130
-          document.getElementById('forgot-password-email').value = usernameOrEmail;                              // 131
-    },                                                                                                           // 132
-    'click #back-to-login-link': function () {                                                                   // 133
-      loginButtonsSession.resetMessages();                                                                       // 134
-                                                                                                                 // 135
-      var username = trimmedElementValueById('login-username');                                                  // 136
-      var email = trimmedElementValueById('login-email')                                                         // 137
-            || trimmedElementValueById('forgot-password-email'); // Ughh. Standardize on names?                  // 138
-                                                                                                                 // 139
-      loginButtonsSession.set('inSignupFlow', false);                                                            // 140
-      loginButtonsSession.set('inForgotPasswordFlow', false);                                                    // 141
-                                                                                                                 // 142
-      // force the ui to update so that we have the approprate fields to fill in                                 // 143
-      Meteor.flush();                                                                                            // 144
-                                                                                                                 // 145
-      if (document.getElementById('login-username'))                                                             // 146
-        document.getElementById('login-username').value = username;                                              // 147
-      if (document.getElementById('login-email'))                                                                // 148
-        document.getElementById('login-email').value = email;                                                    // 149
-      // "login-password" is preserved thanks to the preserve-inputs package                                     // 150
-      if (document.getElementById('login-username-or-email'))                                                    // 151
-        document.getElementById('login-username-or-email').value = email || username;                            // 152
-    },                                                                                                           // 153
+        }                                                                                                        // 108
+      }                                                                                                          // 109
+      else                                                                                                       // 110
+        document.getElementById('login-email').value = usernameOrEmail;                                          // 111
+    },                                                                                                           // 112
+    'click #forgot-password-link': function (event) {                                                            // 113
+      event.stopPropagation();                                                                                   // 114
+      loginButtonsSession.resetMessages();                                                                       // 115
+                                                                                                                 // 116
+      // store values of fields before swtiching to the signup form                                              // 117
+      var email = trimmedElementValueById('login-email');                                                        // 118
+      var usernameOrEmail = trimmedElementValueById('login-username-or-email');                                  // 119
+                                                                                                                 // 120
+      loginButtonsSession.set('inSignupFlow', false);                                                            // 121
+      loginButtonsSession.set('inForgotPasswordFlow', true);                                                     // 122
+                                                                                                                 // 123
+      // force the ui to update so that we have the approprate fields to fill in                                 // 124
+      Meteor.flush();                                                                                            // 125
+      //toggleDropdown();                                                                                        // 126
+                                                                                                                 // 127
+      // update new fields with appropriate defaults                                                             // 128
+      if (email !== null)                                                                                        // 129
+        document.getElementById('forgot-password-email').value = email;                                          // 130
+      else if (usernameOrEmail !== null)                                                                         // 131
+        if (usernameOrEmail.indexOf('@') !== -1)                                                                 // 132
+          document.getElementById('forgot-password-email').value = usernameOrEmail;                              // 133
+    },                                                                                                           // 134
+    'click #back-to-login-link': function () {                                                                   // 135
+      loginButtonsSession.resetMessages();                                                                       // 136
+                                                                                                                 // 137
+      var username = trimmedElementValueById('login-username');                                                  // 138
+      var email = trimmedElementValueById('login-email')                                                         // 139
+            || trimmedElementValueById('forgot-password-email'); // Ughh. Standardize on names?                  // 140
+                                                                                                                 // 141
+      loginButtonsSession.set('inSignupFlow', false);                                                            // 142
+      loginButtonsSession.set('inForgotPasswordFlow', false);                                                    // 143
+                                                                                                                 // 144
+      // force the ui to update so that we have the approprate fields to fill in                                 // 145
+      Meteor.flush();                                                                                            // 146
+                                                                                                                 // 147
+      if (document.getElementById('login-username'))                                                             // 148
+        document.getElementById('login-username').value = username;                                              // 149
+      if (document.getElementById('login-email'))                                                                // 150
+        document.getElementById('login-email').value = email;                                                    // 151
+      // "login-password" is preserved thanks to the preserve-inputs package                                     // 152
+      if (document.getElementById('login-username-or-email'))                                                    // 153
+        document.getElementById('login-username-or-email').value = email || username;                            // 154
+    },                                                                                                           // 155
     'keypress #login-username, keypress #login-email, keypress #login-username-or-email, keypress #login-password, keypress #login-password-again': function (event) {
-      if (event.keyCode === 13)                                                                                  // 155
-        loginOrSignup();                                                                                         // 156
-    }                                                                                                            // 157
-  });                                                                                                            // 158
-                                                                                                                 // 159
-  // additional classes that can be helpful in styling the dropdown                                              // 160
-  Template._loginButtonsLoggedOutDropdown.additionalClasses = function () {                                      // 161
-    if (!Accounts.password) {                                                                                    // 162
-      return false;                                                                                              // 163
-    } else {                                                                                                     // 164
-      if (loginButtonsSession.get('inSignupFlow')) {                                                             // 165
-        return 'login-form-create-account';                                                                      // 166
-      } else if (loginButtonsSession.get('inForgotPasswordFlow')) {                                              // 167
-        return 'login-form-forgot-password';                                                                     // 168
-      } else {                                                                                                   // 169
-        return 'login-form-sign-in';                                                                             // 170
-      }                                                                                                          // 171
-    }                                                                                                            // 172
-  };                                                                                                             // 173
-                                                                                                                 // 174
-  Template._loginButtonsLoggedOutDropdown.dropdownVisible = function () {                                        // 175
-    return loginButtonsSession.get('dropdownVisible');                                                           // 176
-  };                                                                                                             // 177
-                                                                                                                 // 178
-  Template._loginButtonsLoggedOutDropdown.hasPasswordService = function () {                                     // 179
-    return Accounts._loginButtons.hasPasswordService();                                                          // 180
-  };                                                                                                             // 181
-                                                                                                                 // 182
-  Template._loginButtonsLoggedOutDropdown.forbidClientAccountCreation = function () {                            // 183
-    return Accounts._options.forbidClientAccountCreation;                                                        // 184
-  };                                                                                                             // 185
-                                                                                                                 // 186
-  Template._loginButtonsLoggedOutAllServices.services = function () {                                            // 187
-    return Accounts._loginButtons.getLoginServices();                                                            // 188
-  };                                                                                                             // 189
-                                                                                                                 // 190
-  Template._loginButtonsLoggedOutAllServices.isPasswordService = function () {                                   // 191
-    return this.name === 'password';                                                                             // 192
-  };                                                                                                             // 193
-                                                                                                                 // 194
-  Template._loginButtonsLoggedOutAllServices.hasOtherServices = function () {                                    // 195
-    return Accounts._loginButtons.getLoginServices().length > 1;                                                 // 196
-  };                                                                                                             // 197
-                                                                                                                 // 198
-  Template._loginButtonsLoggedOutAllServices.hasPasswordService = function () {                                  // 199
-    return Accounts._loginButtons.hasPasswordService();                                                          // 200
-  };                                                                                                             // 201
-                                                                                                                 // 202
-  Template._loginButtonsLoggedOutPasswordService.fields = function () {                                          // 203
-    var loginFields = [                                                                                          // 204
-      {fieldName: 'username-or-email', fieldLabel: 'Username or Email',                                          // 205
-       visible: function () {                                                                                    // 206
-         return _.contains(                                                                                      // 207
-           ["USERNAME_AND_EMAIL_CONFIRM", "USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL"],                  // 208
-           Accounts.ui._passwordSignupFields());                                                                 // 209
-       }},                                                                                                       // 210
-      {fieldName: 'username', fieldLabel: 'Username',                                                            // 211
-       visible: function () {                                                                                    // 212
-         return Accounts.ui._passwordSignupFields() === "USERNAME_ONLY";                                         // 213
-       }},                                                                                                       // 214
-      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',                                              // 215
-       visible: function () {                                                                                    // 216
-         return Accounts.ui._passwordSignupFields() === "EMAIL_ONLY";                                            // 217
-       }},                                                                                                       // 218
-      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',                                     // 219
-       visible: function () {                                                                                    // 220
-         return true;                                                                                            // 221
-       }}                                                                                                        // 222
-    ];                                                                                                           // 223
-                                                                                                                 // 224
-    var signupFields = [                                                                                         // 225
-      {fieldName: 'username', fieldLabel: 'Username',                                                            // 226
-       visible: function () {                                                                                    // 227
-         return _.contains(                                                                                      // 228
-           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],  // 229
-           Accounts.ui._passwordSignupFields());                                                                 // 230
-       }},                                                                                                       // 231
-      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',                                              // 232
-       visible: function () {                                                                                    // 233
-         return _.contains(                                                                                      // 234
-           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "EMAIL_ONLY"],                                    // 235
-           Accounts.ui._passwordSignupFields());                                                                 // 236
-       }},                                                                                                       // 237
-      {fieldName: 'email', fieldLabel: 'Email (optional)', inputType: 'email',                                   // 238
-       visible: function () {                                                                                    // 239
-         return Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";                           // 240
-       }},                                                                                                       // 241
-      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',                                     // 242
-       visible: function () {                                                                                    // 243
-         return true;                                                                                            // 244
-       }},                                                                                                       // 245
-      {fieldName: 'password-again', fieldLabel: 'Password (again)',                                              // 246
-       inputType: 'password',                                                                                    // 247
-       visible: function () {                                                                                    // 248
-         // No need to make users double-enter their password if                                                 // 249
-         // they'll necessarily have an email set, since they can use                                            // 250
-         // the "forgot password" flow.                                                                          // 251
-         return _.contains(                                                                                      // 252
-           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],                        // 253
-           Accounts.ui._passwordSignupFields());                                                                 // 254
-       }}                                                                                                        // 255
-    ];                                                                                                           // 256
-                                                                                                                 // 257
-    return loginButtonsSession.get('inSignupFlow') ? signupFields : loginFields;                                 // 258
-  };                                                                                                             // 259
-                                                                                                                 // 260
-  Template._loginButtonsLoggedOutPasswordService.inForgotPasswordFlow = function () {                            // 261
-    return loginButtonsSession.get('inForgotPasswordFlow');                                                      // 262
-  };                                                                                                             // 263
-                                                                                                                 // 264
-  Template._loginButtonsLoggedOutPasswordService.inLoginFlow = function () {                                     // 265
-    return !loginButtonsSession.get('inSignupFlow') && !loginButtonsSession.get('inForgotPasswordFlow');         // 266
+      if (event.keyCode === 13)                                                                                  // 157
+        loginOrSignup();                                                                                         // 158
+    }                                                                                                            // 159
+  });                                                                                                            // 160
+                                                                                                                 // 161
+  // additional classes that can be helpful in styling the dropdown                                              // 162
+  Template._loginButtonsLoggedOutDropdown.additionalClasses = function () {                                      // 163
+    if (!Accounts.password) {                                                                                    // 164
+      return false;                                                                                              // 165
+    } else {                                                                                                     // 166
+      if (loginButtonsSession.get('inSignupFlow')) {                                                             // 167
+        return 'login-form-create-account';                                                                      // 168
+      } else if (loginButtonsSession.get('inForgotPasswordFlow')) {                                              // 169
+        return 'login-form-forgot-password';                                                                     // 170
+      } else {                                                                                                   // 171
+        return 'login-form-sign-in';                                                                             // 172
+      }                                                                                                          // 173
+    }                                                                                                            // 174
+  };                                                                                                             // 175
+                                                                                                                 // 176
+  Template._loginButtonsLoggedOutDropdown.dropdownVisible = function () {                                        // 177
+    return loginButtonsSession.get('dropdownVisible');                                                           // 178
+  };                                                                                                             // 179
+                                                                                                                 // 180
+  Template._loginButtonsLoggedOutDropdown.hasPasswordService = function () {                                     // 181
+    return Accounts._loginButtons.hasPasswordService();                                                          // 182
+  };                                                                                                             // 183
+                                                                                                                 // 184
+  Template._loginButtonsLoggedOutDropdown.forbidClientAccountCreation = function () {                            // 185
+    return Accounts._options.forbidClientAccountCreation;                                                        // 186
+  };                                                                                                             // 187
+                                                                                                                 // 188
+  Template._loginButtonsLoggedOutAllServices.services = function () {                                            // 189
+    return Accounts._loginButtons.getLoginServices();                                                            // 190
+  };                                                                                                             // 191
+                                                                                                                 // 192
+  Template._loginButtonsLoggedOutAllServices.isPasswordService = function () {                                   // 193
+    return this.name === 'password';                                                                             // 194
+  };                                                                                                             // 195
+                                                                                                                 // 196
+  Template._loginButtonsLoggedOutAllServices.hasOtherServices = function () {                                    // 197
+    return Accounts._loginButtons.getLoginServices().length > 1;                                                 // 198
+  };                                                                                                             // 199
+                                                                                                                 // 200
+  Template._loginButtonsLoggedOutAllServices.hasPasswordService = function () {                                  // 201
+    return Accounts._loginButtons.hasPasswordService();                                                          // 202
+  };                                                                                                             // 203
+                                                                                                                 // 204
+  Template._loginButtonsLoggedOutPasswordService.fields = function () {                                          // 205
+    var loginFields = [                                                                                          // 206
+      {fieldName: 'username-or-email', fieldLabel: 'Username or Email',                                          // 207
+       visible: function () {                                                                                    // 208
+         return _.contains(                                                                                      // 209
+           ["USERNAME_AND_EMAIL_CONFIRM", "USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL"],                  // 210
+           Accounts.ui._passwordSignupFields());                                                                 // 211
+       }},                                                                                                       // 212
+      {fieldName: 'username', fieldLabel: 'Username',                                                            // 213
+       visible: function () {                                                                                    // 214
+         return Accounts.ui._passwordSignupFields() === "USERNAME_ONLY";                                         // 215
+       }},                                                                                                       // 216
+      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',                                              // 217
+       visible: function () {                                                                                    // 218
+         return Accounts.ui._passwordSignupFields() === "EMAIL_ONLY";                                            // 219
+       }},                                                                                                       // 220
+      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',                                     // 221
+       visible: function () {                                                                                    // 222
+         return true;                                                                                            // 223
+       }}                                                                                                        // 224
+    ];                                                                                                           // 225
+                                                                                                                 // 226
+    var signupFields = [                                                                                         // 227
+      {fieldName: 'username', fieldLabel: 'Username',                                                            // 228
+       visible: function () {                                                                                    // 229
+         return _.contains(                                                                                      // 230
+           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],  // 231
+           Accounts.ui._passwordSignupFields());                                                                 // 232
+       }},                                                                                                       // 233
+      {fieldName: 'email', fieldLabel: 'Email', inputType: 'email',                                              // 234
+       visible: function () {                                                                                    // 235
+         return _.contains(                                                                                      // 236
+           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "EMAIL_ONLY"],                                    // 237
+           Accounts.ui._passwordSignupFields());                                                                 // 238
+       }},                                                                                                       // 239
+      {fieldName: 'email', fieldLabel: 'Email (optional)', inputType: 'email',                                   // 240
+       visible: function () {                                                                                    // 241
+         return Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";                           // 242
+       }},                                                                                                       // 243
+      {                                                                                                          // 244
+        fieldName: 'skype',                                                                                      // 245
+        fieldLabel: 'Skype (обязательно)',                                                                       // 246
+        inputType: 'text',                                                                                       // 247
+        visible: true                                                                                            // 248
+      },                                                                                                         // 249
+      {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',                                     // 250
+       visible: function () {                                                                                    // 251
+         return true;                                                                                            // 252
+       }},                                                                                                       // 253
+      {fieldName: 'password-again', fieldLabel: 'Password (again)',                                              // 254
+       inputType: 'password',                                                                                    // 255
+       visible: function () {                                                                                    // 256
+         // No need to make users double-enter their password if                                                 // 257
+         // they'll necessarily have an email set, since they can use                                            // 258
+         // the "forgot password" flow.                                                                          // 259
+         return _.contains(                                                                                      // 260
+           ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],                        // 261
+           Accounts.ui._passwordSignupFields());                                                                 // 262
+       }}                                                                                                        // 263
+    ];                                                                                                           // 264
+                                                                                                                 // 265
+    return loginButtonsSession.get('inSignupFlow') ? signupFields : loginFields;                                 // 266
   };                                                                                                             // 267
                                                                                                                  // 268
-  Template._loginButtonsLoggedOutPasswordService.inSignupFlow = function () {                                    // 269
-    return loginButtonsSession.get('inSignupFlow');                                                              // 270
+  Template._loginButtonsLoggedOutPasswordService.inForgotPasswordFlow = function () {                            // 269
+    return loginButtonsSession.get('inForgotPasswordFlow');                                                      // 270
   };                                                                                                             // 271
                                                                                                                  // 272
-  Template._loginButtonsLoggedOutPasswordService.showForgotPasswordLink = function () {                          // 273
-    return _.contains(                                                                                           // 274
-      ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "EMAIL_ONLY"],          // 275
-      Accounts.ui._passwordSignupFields());                                                                      // 276
-  };                                                                                                             // 277
-                                                                                                                 // 278
-  Template._loginButtonsLoggedOutPasswordService.showCreateAccountLink = function() {                            // 279
-    return !Accounts._options.forbidClientAccountCreation;                                                       // 280
-  };                                                                                                             // 281
-                                                                                                                 // 282
-  Template._loginButtonsFormField.inputType = function () {                                                      // 283
-    return this.inputType || "text";                                                                             // 284
+  Template._loginButtonsLoggedOutPasswordService.inLoginFlow = function () {                                     // 273
+    return !loginButtonsSession.get('inSignupFlow') && !loginButtonsSession.get('inForgotPasswordFlow');         // 274
+  };                                                                                                             // 275
+                                                                                                                 // 276
+  Template._loginButtonsLoggedOutPasswordService.inSignupFlow = function () {                                    // 277
+    return loginButtonsSession.get('inSignupFlow');                                                              // 278
+  };                                                                                                             // 279
+                                                                                                                 // 280
+  Template._loginButtonsLoggedOutPasswordService.showForgotPasswordLink = function () {                          // 281
+    return _.contains(                                                                                           // 282
+      ["USERNAME_AND_EMAIL_CONFIRM","USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL", "EMAIL_ONLY"],          // 283
+      Accounts.ui._passwordSignupFields());                                                                      // 284
   };                                                                                                             // 285
                                                                                                                  // 286
-                                                                                                                 // 287
-  //                                                                                                             // 288
-  // loginButtonsChangePassword template                                                                         // 289
-  //                                                                                                             // 290
-                                                                                                                 // 291
-  Template._loginButtonsChangePassword.events({                                                                  // 292
-    'keypress #login-old-password, keypress #login-password, keypress #login-password-again': function (event) { // 293
-      if (event.keyCode === 13)                                                                                  // 294
-        changePassword();                                                                                        // 295
-    },                                                                                                           // 296
-    'click #login-buttons-do-change-password': function (event) {                                                // 297
-      event.stopPropagation();                                                                                   // 298
-      changePassword();                                                                                          // 299
-    }                                                                                                            // 300
-  });                                                                                                            // 301
-                                                                                                                 // 302
-  Template._loginButtonsChangePassword.fields = function () {                                                    // 303
-    return [                                                                                                     // 304
-      {fieldName: 'old-password', fieldLabel: 'Current Password', inputType: 'password',                         // 305
-       visible: function () {                                                                                    // 306
-         return true;                                                                                            // 307
-       }},                                                                                                       // 308
-      {fieldName: 'password', fieldLabel: 'New Password', inputType: 'password',                                 // 309
-       visible: function () {                                                                                    // 310
-         return true;                                                                                            // 311
-       }},                                                                                                       // 312
-      {fieldName: 'password-again', fieldLabel: 'New Password (again)',                                          // 313
-       inputType: 'password',                                                                                    // 314
-       visible: function () {                                                                                    // 315
-         // No need to make users double-enter their password if                                                 // 316
-         // they'll necessarily have an email set, since they can use                                            // 317
-         // the "forgot password" flow.                                                                          // 318
-         return _.contains(                                                                                      // 319
-           ["USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],                                                     // 320
-           Accounts.ui._passwordSignupFields());                                                                 // 321
-       }}                                                                                                        // 322
-    ];                                                                                                           // 323
-  };                                                                                                             // 324
-                                                                                                                 // 325
-                                                                                                                 // 326
-  //                                                                                                             // 327
-  // helpers                                                                                                     // 328
-  //                                                                                                             // 329
-                                                                                                                 // 330
-  var elementValueById = function(id) {                                                                          // 331
-    var element = document.getElementById(id);                                                                   // 332
-    if (!element)                                                                                                // 333
-      return null;                                                                                               // 334
-    else                                                                                                         // 335
-      return element.value;                                                                                      // 336
-  };                                                                                                             // 337
+  Template._loginButtonsLoggedOutPasswordService.showCreateAccountLink = function() {                            // 287
+    return !Accounts._options.forbidClientAccountCreation;                                                       // 288
+  };                                                                                                             // 289
+                                                                                                                 // 290
+  Template._loginButtonsFormField.inputType = function () {                                                      // 291
+    return this.inputType || "text";                                                                             // 292
+  };                                                                                                             // 293
+                                                                                                                 // 294
+                                                                                                                 // 295
+  //                                                                                                             // 296
+  // loginButtonsChangePassword template                                                                         // 297
+  //                                                                                                             // 298
+                                                                                                                 // 299
+  Template._loginButtonsChangePassword.events({                                                                  // 300
+    'keypress #login-old-password, keypress #login-password, keypress #login-password-again': function (event) { // 301
+      if (event.keyCode === 13)                                                                                  // 302
+        changePassword();                                                                                        // 303
+    },                                                                                                           // 304
+    'click #login-buttons-do-change-password': function (event) {                                                // 305
+      event.stopPropagation();                                                                                   // 306
+      changePassword();                                                                                          // 307
+    }                                                                                                            // 308
+  });                                                                                                            // 309
+                                                                                                                 // 310
+  Template._loginButtonsChangePassword.fields = function () {                                                    // 311
+    return [                                                                                                     // 312
+      {fieldName: 'old-password', fieldLabel: 'Current Password', inputType: 'password',                         // 313
+       visible: function () {                                                                                    // 314
+         return true;                                                                                            // 315
+       }},                                                                                                       // 316
+      {fieldName: 'password', fieldLabel: 'New Password', inputType: 'password',                                 // 317
+       visible: function () {                                                                                    // 318
+         return true;                                                                                            // 319
+       }},                                                                                                       // 320
+      {fieldName: 'password-again', fieldLabel: 'New Password (again)',                                          // 321
+       inputType: 'password',                                                                                    // 322
+       visible: function () {                                                                                    // 323
+         // No need to make users double-enter their password if                                                 // 324
+         // they'll necessarily have an email set, since they can use                                            // 325
+         // the "forgot password" flow.                                                                          // 326
+         return _.contains(                                                                                      // 327
+           ["USERNAME_AND_OPTIONAL_EMAIL", "USERNAME_ONLY"],                                                     // 328
+           Accounts.ui._passwordSignupFields());                                                                 // 329
+       }}                                                                                                        // 330
+    ];                                                                                                           // 331
+  };                                                                                                             // 332
+                                                                                                                 // 333
+                                                                                                                 // 334
+  //                                                                                                             // 335
+  // helpers                                                                                                     // 336
+  //                                                                                                             // 337
                                                                                                                  // 338
-  var trimmedElementValueById = function(id) {                                                                   // 339
+  var elementValueById = function(id) {                                                                          // 339
     var element = document.getElementById(id);                                                                   // 340
     if (!element)                                                                                                // 341
       return null;                                                                                               // 342
     else                                                                                                         // 343
-      return element.value.replace(/^\s*|\s*$/g, ""); // trim;                                                   // 344
+      return element.value;                                                                                      // 344
   };                                                                                                             // 345
                                                                                                                  // 346
-  var loginOrSignup = function () {                                                                              // 347
-    if (loginButtonsSession.get('inSignupFlow'))                                                                 // 348
-      signup();                                                                                                  // 349
-    else                                                                                                         // 350
-      login();                                                                                                   // 351
-  };                                                                                                             // 352
-                                                                                                                 // 353
-  var login = function () {                                                                                      // 354
-    loginButtonsSession.resetMessages();                                                                         // 355
-                                                                                                                 // 356
-    var username = trimmedElementValueById('login-username');                                                    // 357
-    var email = trimmedElementValueById('login-email');                                                          // 358
-    var usernameOrEmail = trimmedElementValueById('login-username-or-email');                                    // 359
-    // notably not trimmed. a password could (?) start or end with a space                                       // 360
-    var password = elementValueById('login-password');                                                           // 361
-                                                                                                                 // 362
-    var loginSelector;                                                                                           // 363
-    if (username !== null) {                                                                                     // 364
-      if (!Accounts._loginButtons.validateUsername(username))                                                    // 365
-        return;                                                                                                  // 366
-      else                                                                                                       // 367
-        loginSelector = {username: username};                                                                    // 368
-    } else if (email !== null) {                                                                                 // 369
-      if (!Accounts._loginButtons.validateEmail(email))                                                          // 370
-        return;                                                                                                  // 371
-      else                                                                                                       // 372
-        loginSelector = {email: email};                                                                          // 373
-    } else if (usernameOrEmail !== null) {                                                                       // 374
-      // XXX not sure how we should validate this. but this seems good enough (for now),                         // 375
-      // since an email must have at least 3 characters anyways                                                  // 376
-      if (!Accounts._loginButtons.validateUsername(usernameOrEmail))                                             // 377
-        return;                                                                                                  // 378
-      else                                                                                                       // 379
-        loginSelector = usernameOrEmail;                                                                         // 380
-    } else {                                                                                                     // 381
-      throw new Error("Unexpected -- no element to use as a login user selector");                               // 382
-    }                                                                                                            // 383
-                                                                                                                 // 384
-    Meteor.loginWithPassword(loginSelector, password, function (error, result) {                                 // 385
-      if (error) {                                                                                               // 386
-        loginButtonsSession.errorMessage(error.reason || "Unknown error");                                       // 387
-      } else {                                                                                                   // 388
-        loginButtonsSession.closeDropdown();                                                                     // 389
-      }                                                                                                          // 390
-    });                                                                                                          // 391
-  };                                                                                                             // 392
-                                                                                                                 // 393
-  var toggleDropdown = function() {                                                                              // 394
-    $('#login-dropdown-list .dropdown-menu').dropdown('toggle');                                                 // 395
-  };                                                                                                             // 396
-                                                                                                                 // 397
-  var signup = function () {                                                                                     // 398
-    loginButtonsSession.resetMessages();                                                                         // 399
-                                                                                                                 // 400
-    var options = {}; // to be passed to Accounts.createUser                                                     // 401
-                                                                                                                 // 402
-    var username = trimmedElementValueById('login-username');                                                    // 403
-    if (username !== null) {                                                                                     // 404
-      if (!Accounts._loginButtons.validateUsername(username))                                                    // 405
-        return;                                                                                                  // 406
-      else                                                                                                       // 407
-        options.username = username;                                                                             // 408
-    }                                                                                                            // 409
-                                                                                                                 // 410
-    var email = trimmedElementValueById('login-email');                                                          // 411
-    if (email !== null) {                                                                                        // 412
-      if (!Accounts._loginButtons.validateEmail(email))                                                          // 413
-        return;                                                                                                  // 414
-      else                                                                                                       // 415
-        options.email = email;                                                                                   // 416
-    }                                                                                                            // 417
-                                                                                                                 // 418
-    // notably not trimmed. a password could (?) start or end with a space                                       // 419
-    var password = elementValueById('login-password');                                                           // 420
-    if (!Accounts._loginButtons.validatePassword(password))                                                      // 421
-      return;                                                                                                    // 422
-    else                                                                                                         // 423
-      options.password = password;                                                                               // 424
-                                                                                                                 // 425
-    if (!matchPasswordAgainIfPresent())                                                                          // 426
-      return;                                                                                                    // 427
+  var trimmedElementValueById = function(id) {                                                                   // 347
+    var element = document.getElementById(id);                                                                   // 348
+    if (!element)                                                                                                // 349
+      return null;                                                                                               // 350
+    else                                                                                                         // 351
+      return element.value.replace(/^\s*|\s*$/g, ""); // trim;                                                   // 352
+  };                                                                                                             // 353
+                                                                                                                 // 354
+  var loginOrSignup = function () {                                                                              // 355
+    if (loginButtonsSession.get('inSignupFlow'))                                                                 // 356
+      signup();                                                                                                  // 357
+    else                                                                                                         // 358
+      login();                                                                                                   // 359
+  };                                                                                                             // 360
+                                                                                                                 // 361
+  var login = function () {                                                                                      // 362
+    loginButtonsSession.resetMessages();                                                                         // 363
+                                                                                                                 // 364
+    var username = trimmedElementValueById('login-username');                                                    // 365
+    var email = trimmedElementValueById('login-email');                                                          // 366
+    var usernameOrEmail = trimmedElementValueById('login-username-or-email');                                    // 367
+    // notably not trimmed. a password could (?) start or end with a space                                       // 368
+    var password = elementValueById('login-password');                                                           // 369
+                                                                                                                 // 370
+    var loginSelector;                                                                                           // 371
+    if (username !== null) {                                                                                     // 372
+      if (!Accounts._loginButtons.validateUsername(username))                                                    // 373
+        return;                                                                                                  // 374
+      else                                                                                                       // 375
+        loginSelector = {username: username};                                                                    // 376
+    } else if (email !== null) {                                                                                 // 377
+      if (!Accounts._loginButtons.validateEmail(email))                                                          // 378
+        return;                                                                                                  // 379
+      else                                                                                                       // 380
+        loginSelector = {email: email};                                                                          // 381
+    } else if (usernameOrEmail !== null) {                                                                       // 382
+      // XXX not sure how we should validate this. but this seems good enough (for now),                         // 383
+      // since an email must have at least 3 characters anyways                                                  // 384
+      if (!Accounts._loginButtons.validateUsername(usernameOrEmail))                                             // 385
+        return;                                                                                                  // 386
+      else                                                                                                       // 387
+        loginSelector = usernameOrEmail;                                                                         // 388
+    } else {                                                                                                     // 389
+      throw new Error("Unexpected -- no element to use as a login user selector");                               // 390
+    }                                                                                                            // 391
+                                                                                                                 // 392
+    Meteor.loginWithPassword(loginSelector, password, function (error, result) {                                 // 393
+      if (error) {                                                                                               // 394
+        loginButtonsSession.errorMessage(error.reason || "Unknown error");                                       // 395
+      } else {                                                                                                   // 396
+        loginButtonsSession.closeDropdown();                                                                     // 397
+      }                                                                                                          // 398
+    });                                                                                                          // 399
+  };                                                                                                             // 400
+                                                                                                                 // 401
+  var toggleDropdown = function() {                                                                              // 402
+    $('#login-dropdown-list .dropdown-menu').dropdown('toggle');                                                 // 403
+  };                                                                                                             // 404
+                                                                                                                 // 405
+  var signup = function () {                                                                                     // 406
+    loginButtonsSession.resetMessages();                                                                         // 407
+                                                                                                                 // 408
+    var options = {}; // to be passed to Accounts.createUser                                                     // 409
+    options.profile = {};                                                                                        // 410
+                                                                                                                 // 411
+    var username = trimmedElementValueById('login-username');                                                    // 412
+    if (username !== null) {                                                                                     // 413
+      if (!Accounts._loginButtons.validateUsername(username))                                                    // 414
+        return;                                                                                                  // 415
+      else                                                                                                       // 416
+        options.username = username;                                                                             // 417
+    }                                                                                                            // 418
+                                                                                                                 // 419
+    var skype = trimmedElementValueById('login-skype');                                                          // 420
+    if (skype !== null) {                                                                                        // 421
+      if (!Accounts._loginButtons.validateSkype(skype)) {                                                        // 422
+        return;                                                                                                  // 423
+      } else {                                                                                                   // 424
+        options.profile.skype = skype;                                                                           // 425
+      }                                                                                                          // 426
+    }                                                                                                            // 427
                                                                                                                  // 428
-    Accounts.createUser(options, function (error) {                                                              // 429
-      if (error) {                                                                                               // 430
-        loginButtonsSession.errorMessage(error.reason || "Unknown error");                                       // 431
-      } else {                                                                                                   // 432
-        loginButtonsSession.closeDropdown();                                                                     // 433
-      }                                                                                                          // 434
-    });                                                                                                          // 435
-  };                                                                                                             // 436
-                                                                                                                 // 437
-  var forgotPassword = function () {                                                                             // 438
-    loginButtonsSession.resetMessages();                                                                         // 439
-                                                                                                                 // 440
-    var email = trimmedElementValueById("forgot-password-email");                                                // 441
-    if (email.indexOf('@') !== -1) {                                                                             // 442
-      Accounts.forgotPassword({email: email}, function (error) {                                                 // 443
-        if (error)                                                                                               // 444
-          loginButtonsSession.errorMessage(error.reason || "Unknown error");                                     // 445
-        else                                                                                                     // 446
-          loginButtonsSession.infoMessage("Email sent");                                                         // 447
-      });                                                                                                        // 448
-    } else {                                                                                                     // 449
-      loginButtonsSession.infoMessage("Email sent");                                                             // 450
-    }                                                                                                            // 451
-  };                                                                                                             // 452
-                                                                                                                 // 453
-  var changePassword = function () {                                                                             // 454
-    loginButtonsSession.resetMessages();                                                                         // 455
-                                                                                                                 // 456
-    // notably not trimmed. a password could (?) start or end with a space                                       // 457
-    var oldPassword = elementValueById('login-old-password');                                                    // 458
-                                                                                                                 // 459
-    // notably not trimmed. a password could (?) start or end with a space                                       // 460
-    var password = elementValueById('login-password');                                                           // 461
-    if (!Accounts._loginButtons.validatePassword(password))                                                      // 462
-      return;                                                                                                    // 463
-                                                                                                                 // 464
-    if (!matchPasswordAgainIfPresent())                                                                          // 465
-      return;                                                                                                    // 466
-                                                                                                                 // 467
-    Accounts.changePassword(oldPassword, password, function (error) {                                            // 468
-      if (error) {                                                                                               // 469
-         loginButtonsSession.errorMessage(error.reason || "Unknown error");                                      // 470
-      } else {                                                                                                   // 471
-        loginButtonsSession.infoMessage("Password changed");                                                     // 472
+    var email = trimmedElementValueById('login-email');                                                          // 429
+    if (email !== null) {                                                                                        // 430
+      if (!Accounts._loginButtons.validateEmail(email))                                                          // 431
+        return;                                                                                                  // 432
+      else                                                                                                       // 433
+        options.email = email;                                                                                   // 434
+    }                                                                                                            // 435
+                                                                                                                 // 436
+    // notably not trimmed. a password could (?) start or end with a space                                       // 437
+    var password = elementValueById('login-password');                                                           // 438
+    if (!Accounts._loginButtons.validatePassword(password))                                                      // 439
+      return;                                                                                                    // 440
+    else                                                                                                         // 441
+      options.password = password;                                                                               // 442
+                                                                                                                 // 443
+    if (!matchPasswordAgainIfPresent())                                                                          // 444
+      return;                                                                                                    // 445
+    Accounts.createUser(options, function (error) {                                                              // 446
+      if (error) {                                                                                               // 447
+        loginButtonsSession.errorMessage(error.reason || "Unknown error");                                       // 448
+      } else {                                                                                                   // 449
+        loginButtonsSession.closeDropdown();                                                                     // 450
+      }                                                                                                          // 451
+    });                                                                                                          // 452
+  };                                                                                                             // 453
+                                                                                                                 // 454
+  var forgotPassword = function () {                                                                             // 455
+    loginButtonsSession.resetMessages();                                                                         // 456
+                                                                                                                 // 457
+    var email = trimmedElementValueById("forgot-password-email");                                                // 458
+    if (email.indexOf('@') !== -1) {                                                                             // 459
+      Accounts.forgotPassword({email: email}, function (error) {                                                 // 460
+        if (error)                                                                                               // 461
+          loginButtonsSession.errorMessage(error.reason || "Unknown error");                                     // 462
+        else                                                                                                     // 463
+          loginButtonsSession.infoMessage("Email sent");                                                         // 464
+      });                                                                                                        // 465
+    } else {                                                                                                     // 466
+      loginButtonsSession.infoMessage("Email sent");                                                             // 467
+    }                                                                                                            // 468
+  };                                                                                                             // 469
+                                                                                                                 // 470
+  var changePassword = function () {                                                                             // 471
+    loginButtonsSession.resetMessages();                                                                         // 472
                                                                                                                  // 473
-        // wait 3 seconds, then expire the msg                                                                   // 474
-        Meteor.setTimeout(function() {                                                                           // 475
-          loginButtonsSession.resetMessages();                                                                   // 476
-        }, 3000);                                                                                                // 477
-      }                                                                                                          // 478
-    });                                                                                                          // 479
-  };                                                                                                             // 480
+    // notably not trimmed. a password could (?) start or end with a space                                       // 474
+    var oldPassword = elementValueById('login-old-password');                                                    // 475
+                                                                                                                 // 476
+    // notably not trimmed. a password could (?) start or end with a space                                       // 477
+    var password = elementValueById('login-password');                                                           // 478
+    if (!Accounts._loginButtons.validatePassword(password))                                                      // 479
+      return;                                                                                                    // 480
                                                                                                                  // 481
-  var matchPasswordAgainIfPresent = function () {                                                                // 482
-    // notably not trimmed. a password could (?) start or end with a space                                       // 483
-    var passwordAgain = elementValueById('login-password-again');                                                // 484
-    if (passwordAgain !== null) {                                                                                // 485
-      // notably not trimmed. a password could (?) start or end with a space                                     // 486
-      var password = elementValueById('login-password');                                                         // 487
-      if (password !== passwordAgain) {                                                                          // 488
-        loginButtonsSession.errorMessage("Passwords don't match");                                               // 489
-        return false;                                                                                            // 490
-      }                                                                                                          // 491
-    }                                                                                                            // 492
-    return true;                                                                                                 // 493
-  };                                                                                                             // 494
-}) ();                                                                                                           // 495
-                                                                                                                 // 496
+    if (!matchPasswordAgainIfPresent())                                                                          // 482
+      return;                                                                                                    // 483
+                                                                                                                 // 484
+    Accounts.changePassword(oldPassword, password, function (error) {                                            // 485
+      if (error) {                                                                                               // 486
+         loginButtonsSession.errorMessage(error.reason || "Unknown error");                                      // 487
+      } else {                                                                                                   // 488
+        loginButtonsSession.infoMessage("Password changed");                                                     // 489
+                                                                                                                 // 490
+        // wait 3 seconds, then expire the msg                                                                   // 491
+        Meteor.setTimeout(function() {                                                                           // 492
+          loginButtonsSession.resetMessages();                                                                   // 493
+        }, 3000);                                                                                                // 494
+      }                                                                                                          // 495
+    });                                                                                                          // 496
+  };                                                                                                             // 497
+                                                                                                                 // 498
+  var matchPasswordAgainIfPresent = function () {                                                                // 499
+    // notably not trimmed. a password could (?) start or end with a space                                       // 500
+    var passwordAgain = elementValueById('login-password-again');                                                // 501
+    if (passwordAgain !== null) {                                                                                // 502
+      // notably not trimmed. a password could (?) start or end with a space                                     // 503
+      var password = elementValueById('login-password');                                                         // 504
+      if (password !== passwordAgain) {                                                                          // 505
+        loginButtonsSession.errorMessage("Passwords don't match");                                               // 506
+        return false;                                                                                            // 507
+      }                                                                                                          // 508
+    }                                                                                                            // 509
+    return true;                                                                                                 // 510
+  };                                                                                                             // 511
+}) ();                                                                                                           // 512
+                                                                                                                 // 513
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }).call(this);

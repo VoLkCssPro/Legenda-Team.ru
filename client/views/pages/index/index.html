@@ -1,5 +1,81 @@
 <template name='index'>
-	<div class="page-header">
-		<h1>Главная</h1>
+	<div class="col-xs-8">
+		<div class="row">
+			{{#each news}}
+				{{> prevNews}}
+			{{/each}}
+		</div>
+	</div>
+	<div class="col-xs-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Админцентр
+			</div>
+			<div class="panel-body">
+				{{> addNews}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="headerImage">
+	<img src="images/header.png">
+</template>
+
+<template name="prevNews">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			{{temaNews}} - {{titleNews}}
+			{{#if currentUser.profile.isAdmin}}
+				<span class="pull-right glyphicon glyphicon-remove deleteNews" data-id="{{_id}}"></span>
+			{{/if}}
+		</div>
+		<div class="panel-body">
+			{{shortNews}}
+			<hr>
+			<button class="btn btn-primary btn-ms pull-right" data-toggle="modal" data-target="#myModal">
+	  			Читать полную новость
+			</button>
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							{{titleNews}}
+						</h4>
+					</div>
+					<div class="modal-body">
+						{{descNews}}
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+							Закрыть
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="addNews">
+	<div class="form-group">
+		<input type="text" placeholder="Название" class="form-control" id='titleNewsI'>
+	</div>
+	<div class="form-group">
+		<input type="text" placeholder="Тематика" class="form-control" id='temaNewsI'>
+	</div>
+	<div class="form-group">
+		<input type="text" placeholder="Короткое описание" class="form-control" id='shortNewsI'>
+	</div>
+	<div class="form-group">
+		<textarea placeholder="Полное описание" class="form-control" id='descNewsI'></textarea>
+	</div>
+	<div class="form-group">
+		<button class='btn btn-success pull-right' id="addBtnNews">Добавить новость</button>
 	</div>
 </template>

@@ -151,6 +151,20 @@
             return false;
         }
     };
+
+    Accounts._loginButtons.validateSkype = function(skype) {
+        if (skype.length > 0) {
+            if (!Meteor.users.findOne({'profile.skype': skype})) {
+            	return true;
+            } else {
+            	loginButtonsSession.errorMessage("Такой скайп уже есть");
+            	return false;
+            }
+        } else {
+            loginButtonsSession.errorMessage("Введите скайп");
+            return false;
+        }
+    };
     Accounts._loginButtons.validateEmail = function(email) {
         if (Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL" && email === '')
             return true;

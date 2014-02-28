@@ -1,0 +1,29 @@
+<template name="user">
+	<div class="page-header">
+		<h1>
+			{{username}}
+			<small class='pull-right'>
+				{{#if profile.online}}
+					<span class='label label-success'>Онлайн</span>
+				{{else}}
+					<span class='label label-danger'>Оффлайн</span>
+				{{/if}}
+				<span class='label label-default'>{{profile.RS}} RS</span>
+			</small>
+		</h1>
+	</div>
+	<dl class='dl-horizontal'>
+		<dt>Группа:</dt>
+		<dd>
+			{{#if profile.isAdmin}}
+				<span class="text-danger">Администратор</span>
+			{{else}}
+				<span>Пользователь</span>
+			{{/if}}
+		</dd>
+		<dt>Skype:</dt>
+		<dd>{{profile.skype}}</dd>
+		<dt>E-Mail:</dt>
+		<dd>{{emails.0.address}}</dd>
+	</dl>
+</template>

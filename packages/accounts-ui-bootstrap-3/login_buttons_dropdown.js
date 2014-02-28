@@ -98,13 +98,15 @@
       Meteor.flush();
 
       // update new fields with appropriate defaults
-      if (username !== null)
+      if (username !== null) {
         document.getElementById('login-username').value = username;
-      else if (email !== null)
+      } else if (email !== null) {
         document.getElementById('login-email').value = email;
-      else if (usernameOrEmail !== null)
-        if (usernameOrEmail.indexOf('@') === -1)
+      } else if (usernameOrEmail !== null) {
+        if (usernameOrEmail.indexOf('@') === -1) {
           document.getElementById('login-username').value = usernameOrEmail;
+        }
+      }
       else
         document.getElementById('login-email').value = usernameOrEmail;
     },
@@ -239,6 +241,12 @@
        visible: function () {
          return Accounts.ui._passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
        }},
+      {
+        fieldName: 'skype', 
+        fieldLabel: 'Skype (обязательно)', 
+        inputType: 'text',
+        visible: true
+      },
       {fieldName: 'password', fieldLabel: 'Password', inputType: 'password',
        visible: function () {
          return true;
@@ -399,6 +407,7 @@
     loginButtonsSession.resetMessages();
 
     var options = {}; // to be passed to Accounts.createUser
+    options.profile = {};
 
     var username = trimmedElementValueById('login-username');
     if (username !== null) {
@@ -406,6 +415,15 @@
         return;
       else
         options.username = username;
+    }
+
+    var skype = trimmedElementValueById('login-skype');
+    if (skype !== null) {
+      if (!Accounts._loginButtons.validateSkype(skype)) {
+        return;
+      } else {
+        options.profile.skype = skype;
+      }
     }
 
     var email = trimmedElementValueById('login-email');
@@ -425,7 +443,6 @@
 
     if (!matchPasswordAgainIfPresent())
       return;
-
     Accounts.createUser(options, function (error) {
       if (error) {
         loginButtonsSession.errorMessage(error.reason || "Unknown error");

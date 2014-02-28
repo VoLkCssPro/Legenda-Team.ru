@@ -3,7 +3,7 @@ a.dropdown-toggle {
 }
 
 .gold {
-	background: linear-gradient(#ffee11, #ffcc00);
+	background: #42484e;
 	opacity:1;
 }
 
@@ -12,7 +12,7 @@ a.dropdown-toggle {
 }
 
 .silver {
-	background: linear-gradient(#dcd8d8, #c0c0c0);
+	background: #42484e;
 	opacity:1;
 }
 
@@ -21,10 +21,18 @@ a.dropdown-toggle {
 }
 
 .bronze {
-	background: linear-gradient(#d7863a, #b87333);
+	background: #42484e;
 	opacity:1;
 }
 
 .bronze:hover {
 	opacity:0.8;
+}
+
+.deleteContest {
+	cursor: pointer;
+}
+
+.deleteCompetition {
+	cursor: pointer;
 }

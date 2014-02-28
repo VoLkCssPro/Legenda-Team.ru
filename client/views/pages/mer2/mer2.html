@@ -1,0 +1,128 @@
+<template name="mer2">
+	<div class="page-header">
+		<h1>Соревнования</h1>
+	</div>
+	<div class="col-sm-8">
+		{{#if competition}}
+				<div class="panel-group" id="accordion">
+					{{#each competition}}
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#{{_id}}">
+										{{nameCompetition}}
+									</a>
+									{{#if currentUser.profile.isAdmin}}
+									<span class="pull-right glyphicon glyphicon-remove deleteCompetition" data-id="{{_id}}"></span>
+									{{/if}}
+								</h4>
+							</div>
+							<div id="{{_id}}" class="panel-collapse collapse">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12">
+											<ul class="list-unstyled">
+												<li>- {{descriptionCompetition}}</li>
+											</ul>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-xs-12">
+											{{> competitionPlayers}}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+		{{else}}
+			<h1 class="text-muted">Нет соревнований</h1>
+		{{/if}}
+	</div>
+	<div class="col-sm-4">
+		<div class="row">
+			{{#if currentUser.profile.isAdmin}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Админцентр</h3>
+				</div>
+				<div class="panel-body">
+					{{> addCompetition}}
+				</div>
+			</div>
+			{{/if}}	
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Статистика</h3>
+				</div>
+				<div class="panel-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="addCompetition">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<input type="text" placeholder="Название" class="form-control" id="nameCompetitionInput">
+		</div>
+		<div class="form-group">
+			<input type="text" placeholder="Описание" class="form-control" id="descriptionCompetitionInput" data-role="tagsinput">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-success pull-right" id="btnAddCompetition">Добавить соревнование</button>
+		</div>
+	</div>
+</template>
+
+<template name="competitionPlayers">
+	<table class='table table-hover table-striped'>
+		<caption>
+			<h3>Команда 1</h3>
+			<button class="btn btn-default addPlayer" data-id="{{_id}}">Занять место</button>
+		</caption>
+		<thead>
+			<tr>
+				<th>Имя участника</th>
+				<th>Skype</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				{{#each members}}
+					<td>
+						{{username}}
+					</td>
+					<td>
+						{{skype}}
+					</td>
+				{{/each}}
+			</tr>
+		</tbody>
+	</table>	
+	<table class='table table-hover table-striped'>
+		<caption>
+			<h3>Команда 2</h3>
+		</caption>
+		<thead>
+			<tr>
+				<th>Имя участника</th>
+				<th>Skype</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					
+				</td>
+				<td>
+					Скайп участника
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</template>
