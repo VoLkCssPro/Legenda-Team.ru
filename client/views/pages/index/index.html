@@ -7,6 +7,7 @@
 		</div>
 	</div>
 	<div class="col-xs-4">
+		{{#if currentUser.profile.isAdmin}}
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Админцентр
@@ -15,11 +16,21 @@
 				{{> addNews}}
 			</div>
 		</div>
+		{{/if}}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Статистика
+			</div>
+			<div class="panel-body">
+				В процессе..
+			</div>
+		</div>
 	</div>
 </template>
 
 <template name="headerImage">
 	<img src="images/header.png">
+	<hr>
 </template>
 
 <template name="prevNews">
