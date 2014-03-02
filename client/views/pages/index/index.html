@@ -62,13 +62,13 @@
 <template name="prevNews">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			{{temaNews}} - {{titleNews}}
+			{{tema}} - {{title}}
 			{{#if currentUser.profile.isAdmin}}
 				<span class="pull-right glyphicon glyphicon-remove deleteNews" data-id="{{_id}}"></span>
 			{{/if}}
 		</div>
 		<div class="panel-body">
-			{{shortNews}}
+			{{short}}
 			<hr>
 			<button class="btn btn-primary btn-ms pull-right openNews" data-toggle="modal" data-target="#myModal">
 	  			Читать полную новость
@@ -82,11 +82,11 @@
 							&times;
 						</button>
 						<h4 class="modal-title" id="myModalLabel">
-							{{titleNews}}
+							{{title}}
 						</h4>
 					</div>
 					<div class="modal-body">
-						{{descNews}}
+						{{desc}}
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">

@@ -14,7 +14,7 @@ Router.map(function () {
 		data: function() {
 			return {
 				news: function() {
-					var news = News.find().map(function(doc, index, cursor) {
+					var news = News.find({}, {sort: {date: -1}}).map(function(doc, index, cursor) {
 				    	var i = _.extend(doc, {index: index});
 				    	i.index++;
 				    	return i;

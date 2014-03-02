@@ -10,16 +10,17 @@ Template.prevNews.events({
 
 Template.addNews.events({
 	'click #addBtnNews': function() {
-		var titleNews = $('#titleNewsI').val();
-		var temaNews = $('#temaNewsI').val();
-		var shortNews = $('#shortNewsI').val();
-		var descNews = $('#descNewsI').val();
-		News.insert({'titleNews': titleNews, 'temaNews': temaNews, 'shortNews': shortNews, 'descNews': descNews}, function() {
-			$('#titleNewsI').val('');
-			$('#temaNewsI').val('');
-			$('#shortNewsI').val('');
-			$('#descNewsI').val('');
-		}, function() {
+		News.insert({
+				'title': $('#titleNewsI').val(), 
+				'tema': $('#temaNewsI').val(), 
+				'short': $('#shortNewsI').val(), 
+				'desc': $('#descNewsI').val(),
+				'date': Date.now()
+			}, function() {
+				$('#titleNewsI').val('');
+				$('#temaNewsI').val('');
+				$('#shortNewsI').val('');
+				$('#descNewsI').val('');
 		});
 	}
 });
