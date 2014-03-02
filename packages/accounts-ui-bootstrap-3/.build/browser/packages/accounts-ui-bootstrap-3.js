@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/accounts_ui.js                                                               //
+// packages\accounts-ui-bootstrap-3\accounts_ui.js                                                               //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -72,7 +72,7 @@ Accounts.ui._passwordSignupFields = function () {                               
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/template.login_buttons.js                                                    //
+// packages\accounts-ui-bootstrap-3\template.login_buttons.js                                                    //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -96,7 +96,7 @@ Template.__define__("_loginButtonsLoggingInPadding",Package.handlebars.Handlebar
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/template.login_buttons_single.js                                             //
+// packages\accounts-ui-bootstrap-3\template.login_buttons_single.js                                             //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -117,7 +117,7 @@ Template.__define__("_loginButtonsLoggedInSingleLogoutButton",Package.handlebars
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/template.login_buttons_dropdown.js                                           //
+// packages\accounts-ui-bootstrap-3\template.login_buttons_dropdown.js                                           //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -145,7 +145,7 @@ Template.__define__("_loginButtonsChangePassword",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/template.login_buttons_dialogs.js                                            //
+// packages\accounts-ui-bootstrap-3\template.login_buttons_dialogs.js                                            //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -168,7 +168,7 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/login_buttons_session.js                                                     //
+// packages\accounts-ui-bootstrap-3\login_buttons_session.js                                                     //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -287,7 +287,7 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/login_buttons.js                                                             //
+// packages\accounts-ui-bootstrap-3\login_buttons.js                                                             //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -494,7 +494,7 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/login_buttons_single.js                                                      //
+// packages\accounts-ui-bootstrap-3\login_buttons_single.js                                                      //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -559,7 +559,7 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/login_buttons_dropdown.js                                                    //
+// packages\accounts-ui-bootstrap-3\login_buttons_dropdown.js                                                    //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //
@@ -1089,7 +1089,7 @@ Template.__define__("_loginButtonsMessagesDialog",Package.handlebars.Handlebars.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                               //
-// packages/accounts-ui-bootstrap-3/login_buttons_dialogs.js                                                     //
+// packages\accounts-ui-bootstrap-3\login_buttons_dialogs.js                                                     //
 //                                                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                  //

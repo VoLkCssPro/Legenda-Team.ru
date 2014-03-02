@@ -19,6 +19,7 @@ Template.addNews.events({
 			$('#temaNewsI').val('');
 			$('#shortNewsI').val('');
 			$('#descNewsI').val('');
+		}, function() {
 		});
 	}
 });

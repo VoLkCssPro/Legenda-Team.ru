@@ -3,58 +3,58 @@
   "sliceDependencies": {
     "browser.json": {
       "files": {
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/accounts_ui.js": "01e5f73cb761de0060769bd373f32b84fda6eb55",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_images.css": "385fc9cda534dbde923a0e9f936dc1aa996d0726",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_dropdown.styl": "31c21c5d5ba08df1254b6aba4b5a19e680d63b10",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons.html": "d4a21bdf3b5408b9e92201836f8e0e16adcc4232",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_single.html": "9553e1ce893333d12809adc42c567b77af3b8769",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_dropdown.html": "13d8d0bc5ce52509253475335498f7af777b34a7",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_dialogs.html": "0200365568f281627e29f0dcd33ea96ebbfb6630",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_session.js": "c3bebb7def5fc7231576da3294806cbb698d7871",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons.js": "577ffdd0fea03d3bb40e7996a3fb50bd71875a50",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_single.js": "c0e6ee443f4e474003626d018ca117bad09c7343",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_dropdown.js": "414cc5dffe62e432a366164aa42fae881135b085",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/login_buttons_dialogs.js": "e3ff7a8284159203ebf4e9b087bc954d5855095a",
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/accounts_ui.styl": "ff72d6724212bb33ef0a0b8b316e2719ca69b9ff"
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\accounts_ui.js": "01e5f73cb761de0060769bd373f32b84fda6eb55",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_images.css": "385fc9cda534dbde923a0e9f936dc1aa996d0726",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_dropdown.styl": "31c21c5d5ba08df1254b6aba4b5a19e680d63b10",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons.html": "d4a21bdf3b5408b9e92201836f8e0e16adcc4232",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_single.html": "9553e1ce893333d12809adc42c567b77af3b8769",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_dropdown.html": "13d8d0bc5ce52509253475335498f7af777b34a7",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_dialogs.html": "0200365568f281627e29f0dcd33ea96ebbfb6630",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_session.js": "c3bebb7def5fc7231576da3294806cbb698d7871",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons.js": "577ffdd0fea03d3bb40e7996a3fb50bd71875a50",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_single.js": "c0e6ee443f4e474003626d018ca117bad09c7343",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_dropdown.js": "414cc5dffe62e432a366164aa42fae881135b085",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\login_buttons_dialogs.js": "e3ff7a8284159203ebf4e9b087bc954d5855095a",
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\accounts_ui.styl": "ff72d6724212bb33ef0a0b8b316e2719ca69b9ff"
       },
       "directories": []
     },
     "os.json": {
       "files": {
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
       },
       "directories": []
     },
     "tests.browser.json": {
       "files": {
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
       },
       "directories": []
     },
     "tests.os.json": {
       "files": {
-        "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
+        "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
       },
       "directories": []
     }
   },
   "pluginDependencies": {
     "files": {
-      "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3/package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
+      "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3\\package.js": "37b38af41c6fb8d12d04bcae6601e50594cbdea7"
     },
     "directories": []
   },
   "pluginProviderPackages": {
-    "accounts-ui-bootstrap-3": "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3",
-    "meteor": "/root/.meteor/packages/meteor/60a2f30bca",
-    "session": "/root/.meteor/packages/session/582fcedc63",
-    "handlebars": "/root/.meteor/packages/handlebars/41a928d631",
-    "accounts-password": "/root/.meteor/packages/accounts-password/4131a4bb66",
-    "stylus": "/root/.meteor/packages/stylus/26f804a4a2",
-    "accounts-base": "/root/.meteor/packages/accounts-base/ce061e59d6",
-    "underscore": "/root/.meteor/packages/underscore/381c001cdc",
-    "templating": "/root/.meteor/packages/templating/37ba1c4759"
+    "accounts-ui-bootstrap-3": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3",
+    "meteor": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\meteor\\338a49b8bf",
+    "session": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\session\\d66688d735",
+    "handlebars": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\handlebars\\9f4d70719d",
+    "accounts-password": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-password\\7304b3a9c0",
+    "stylus": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\stylus\\0500b5f887",
+    "accounts-base": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-base\\27825cf2d7",
+    "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\98a94dbd76",
+    "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\decc845771"
   },
-  "source": "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3"
+  "source": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3"
 }
