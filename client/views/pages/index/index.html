@@ -70,11 +70,9 @@
 		<div class="panel-body">
 			{{short}}
 			<hr>
-			<button class="btn btn-primary btn-ms pull-right openNews" data-toggle="modal" data-target="#myModal">
-	  			Читать полную новость
-			</button>
+			<button class="btn btn-primary btn-ms pull-right openNews" data-toggle="modal" data-target="#modal-news-{{_id}}">Читать полную новость</button>
 		</div>
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="modal-news-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
