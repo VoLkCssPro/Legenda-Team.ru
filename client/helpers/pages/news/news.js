@@ -5,7 +5,7 @@ Template.prevNews.events({
 		if(target.hasAttribute("data-id")) {
 			News.remove(target.getAttribute("data-id"))
 		}
-	}
+	},
 });
 
 Template.addNews.events({
