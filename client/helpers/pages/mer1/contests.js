@@ -34,14 +34,15 @@ Template.addContests.events({
 	}
 });
 
-/*Template.entryCon.events({
-	'click .btnGiveEntry': function(e) {
-		var target = e.currentTarget;
-		if(!target) return;
-		if(target.hasAttribute("data-id")) {
-			var urlGiveEntry = $('.urlGiveEntryInput').val();
-			var descGiveEntry = $('.descGiveEntryInput').val();
-			Contests.insert(user);
-		}
+Template.entryContests.events({
+	'click .btnGiveEntry': function() {
+		Contests.update(id, {
+			$addToSet: {
+				entryContests: {
+					var url = $('urlInput');
+					var desc = $('descInput');
+				}
+			}
+		});
 	}
-});*/
+})

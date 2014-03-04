@@ -36,23 +36,14 @@
 					</div>
 					<hr>
 					<div class="row">
-						{{> entryCon}}
+						{{> entryContests}}
 					</div>
 					<hr>
 					<div class="row">
 						<div class="col-sm-12">
 							<h3>Заявки</h3>
-							{{#each entryConReadyDota}}
-								<ul class="list-group">
-										<li class="list-group-item">
-											<dl class='dl-horizontal'>
-											<dt>Ссылка:</dt>
-											<dd>{{urlGiveEntry}}</dd>
-											<dt>Описание:</dt>
-											<dd>{{descGiveEntry}}</dd>
-										</dl>
-									</li>
-									</ul>	
+							{{#each entryContests}}
+								{{url}}
 							{{else}}
 								<h4 class='text-muted'>Еще нет заявок, вы можете быть первым!</h4>
 							{{/each}}
