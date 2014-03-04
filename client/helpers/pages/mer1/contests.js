@@ -38,9 +38,9 @@ Template.entryContests.events({
 	'click .btnGiveEntry': function() {
 		Contests.update(id, {
 			$addToSet: {
-				entryContests: {
-					var url = $('urlInput');
-					var desc = $('descInput');
+				members: {
+					url: $('urlInput').val(),
+					descr: $('descInput').val()
 				}
 			}
 		});
