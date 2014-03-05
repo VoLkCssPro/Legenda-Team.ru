@@ -47,14 +47,14 @@
   },
   "pluginProviderPackages": {
     "accounts-ui-bootstrap-3": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3",
-    "meteor": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\meteor\\338a49b8bf",
-    "session": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\session\\d66688d735",
-    "handlebars": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\handlebars\\9f4d70719d",
-    "accounts-password": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-password\\7304b3a9c0",
-    "stylus": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\stylus\\0500b5f887",
-    "accounts-base": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-base\\27825cf2d7",
-    "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\98a94dbd76",
-    "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\decc845771"
+    "meteor": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\meteor\\4e6b639cf2",
+    "session": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\session\\500b211edd",
+    "handlebars": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\handlebars\\8f509ea632",
+    "accounts-password": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-password\\f032de79a5",
+    "stylus": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\stylus\\a4ce444821",
+    "accounts-base": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-base\\d4ca4b6b73",
+    "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\385ecbfa96",
+    "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\19b009813c"
   },
   "source": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3"
 }

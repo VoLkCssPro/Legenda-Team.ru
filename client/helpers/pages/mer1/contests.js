@@ -35,14 +35,18 @@ Template.addContests.events({
 });
 
 Template.entryContests.events({
-	'click .btnGiveEntry': function() {
-		Contests.update(id, {
-			$addToSet: {
-				members: {
-					url: $('urlInput').val(),
-					descr: $('descInput').val()
-				}
+	'click .btnGiveEntry': function(e) {
+		var target = e.currentTarget;
+		if(!target) return;
+		var contestId = target.getAttribute("data-contestId");
+		var urlGiveEntry = $(".url-input-" + contestId).val();
+		var descGiveEntry = $(".desc-input-" + contestId).val();
+		Meteor.call('joinCon', contestId, urlGiveEntry, descGiveEntry, function(error, result) {
+			if (error) {
+				alert(error);
 			}
 		});
 	}
-})
+});
+
+
