@@ -2,22 +2,22 @@ Contests = new Meteor.Collection('contests');
 
 if (Meteor.isServer) {
 	Contests.allow({
-		insert: function (userId, doc) {
-			if (Meteor.users.findOne({_id: userId, 'profile.isAdmin': true})) {
+		insert: function (userId) {
+			if (Meteor.users.findOne(userId).profile.isAdmin == true) {
 				return true;
 			} else {
 				return false;
 			}
 		},
-		update: function (userId, doc, fields, modifier) {
-			if (Meteor.users.findOne({_id: userId, 'profile.isAdmin': true})) {
+		update: function (userId) {
+			if (Meteor.users.findOne(userId).profile.isAdmin == true) {
 				return true;
 			} else {
 				return false;
 			}
 		},
-		remove: function (userId, doc) {
-			if (Meteor.users.findOne({_id: userId, 'profile.isAdmin': true})) {
+		remove: function (userId) {
+			if (Meteor.users.findOne(userId).profile.isAdmin == true) {
 				return true;
 			} else {
 				return false;

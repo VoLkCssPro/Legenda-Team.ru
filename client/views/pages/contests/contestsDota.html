@@ -30,20 +30,24 @@
 								</dd>
 							</dl>
 						</div>
-						<div class="col-md-3">
-							<img src="http://lorempixel.com/150/150" alt="">
-						</div>
 					</div>
 					<hr>
 					<div class="row">
 						{{> entryContests}}
 					</div>
-					<hr>
 					<div class="row">
 						<div class="col-sm-12">
 							<h3>Заявки</h3>
-							{{#each entryContests}}
-								{{url}}
+							{{#each members}}
+								<div class="well">
+									<dl class='dl-horizontal'>
+									<dt>Ник участника:</dt>
+									<dd>{{username}}</dd>
+									<dt>Ссылка на работу:</dt>
+									<dd>{{urlGiveEntry}}</dd>
+									<dt>Краткое описание:</dt>
+									<dd>{{descGiveEntry}}</dd>	
+								</div>
 							{{else}}
 								<h4 class='text-muted'>Еще нет заявок, вы можете быть первым!</h4>
 							{{/each}}
