@@ -66,6 +66,9 @@
     "accounts-base": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-base\\d4ca4b6b73",
     "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\385ecbfa96",
     "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\19b009813c"
+<<<<<<< HEAD
+>>>>>>> 40a49c2216cba03bf8111e8e4d6c58b601a33054
+=======
 >>>>>>> 40a49c2216cba03bf8111e8e4d6c58b601a33054
   },
   "source": "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3"
