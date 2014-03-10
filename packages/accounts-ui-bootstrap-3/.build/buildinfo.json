@@ -46,6 +46,7 @@
     "directories": []
   },
   "pluginProviderPackages": {
+<<<<<<< HEAD
     "accounts-ui-bootstrap-3": "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3",
     "meteor": "/root/.meteor/packages/meteor/60a2f30bca",
     "session": "/root/.meteor/packages/session/582fcedc63",
@@ -55,6 +56,17 @@
     "accounts-base": "/root/.meteor/packages/accounts-base/ce061e59d6",
     "underscore": "/root/.meteor/packages/underscore/381c001cdc",
     "templating": "/root/.meteor/packages/templating/37ba1c4759"
+=======
+    "accounts-ui-bootstrap-3": "C:\\Users\\Legenda Team\\Documents\\GitHub\\Legenda-Team.ru\\packages\\accounts-ui-bootstrap-3",
+    "meteor": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\meteor\\4e6b639cf2",
+    "session": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\session\\500b211edd",
+    "handlebars": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\handlebars\\8f509ea632",
+    "accounts-password": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-password\\f032de79a5",
+    "stylus": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\stylus\\a4ce444821",
+    "accounts-base": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\accounts-base\\d4ca4b6b73",
+    "underscore": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\underscore\\385ecbfa96",
+    "templating": "C:\\Users\\Legenda Team\\AppData\\Local\\.meteor\\packages\\templating\\19b009813c"
+>>>>>>> 40a49c2216cba03bf8111e8e4d6c58b601a33054
   },
   "source": "/home/VoLk/www/Legenda-Team.ru/packages/accounts-ui-bootstrap-3"
 }
